@@ -30,14 +30,17 @@ class CategoryItem extends Component {
     })
   }
   renderProductList() {
-    return this.state.products.map(item => 
-      <ProductItem product={ item } key={ item.id } />
-    )
+    const currentCategoryId = this.props.category.id
+    const activeCategoryId = this.props.activeCategory
+
+    if (currentCategoryId == activeCategoryId) {
+      return this.state.products.map(item => 
+        <ProductItem product={ item } key={ item.id } />
+      )
+    }
   }
   render() { 
     const { id, name } = this.props.category
-    // const isSameWithAciveCategory = id == this.props.activeCategory
-    // console.log(`Category: ${name} is ${isSameWithAciveCategory ? '' : 'not '}active`);
     
     return (
       <>
